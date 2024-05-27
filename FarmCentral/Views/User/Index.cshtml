@@ -1,6 +1,53 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<User>
 @{
+    ViewData["Title"] = "Users";
 }
-<h1>Hello User!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles for the centered heading and green theme */
+        body {
+            background-color: #f0f8ea; /* Light green background */
+        }
+
+        .center-heading {
+            text-align: center;
+            color: #228B22; /* Dark green text color */
+            padding: 50px 0;
+        }
+    </style>
+
+    @* reference https://getbootstrap.com/docs/4.0/examples/album/# *@
+
+</head>
+<body>
+    <main role="main">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body">
+                                    <p class="card-text">@item.Name @item.LastName</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">@item.Email</button>
+                                        </div>
+                                        <small class="text-muted">@item.Id</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+    </main>
+</body>
+</html>

@@ -1,4 +1,5 @@
 ﻿using FarmCentral.Data;
+using FarmCentral.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FarmCentral.Controllers
@@ -15,6 +16,11 @@ namespace FarmCentral.Controllers
         {
             var products = _context.Products.ToList();
             return View(products);
+        }
+        public IActionResult Details(int id)
+        {
+            Product product = _context.Products.FirstOrDefault(c => c.Id == id);
+            return View(product);
         }
     }
 }
