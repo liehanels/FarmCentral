@@ -1,6 +1,7 @@
 ﻿using FarmCentral.Data;
 using FarmCentral.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FarmCentral.Controllers
 {
@@ -14,8 +15,8 @@ namespace FarmCentral.Controllers
         }
         public IActionResult Index()
         {
-            List<User> users = _context.Users.ToList();
-            return View(users);
+            List<Farmer> FarmerUsers = _context.Farmers.Include(u => u.FarmerUser).ToList();
+            return View(FarmerUsers);
         }
     }
 }

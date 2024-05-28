@@ -1,6 +1,7 @@
 ﻿using FarmCentral.Data;
 using FarmCentral.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FarmCentral.Controllers
 {
@@ -14,12 +15,12 @@ namespace FarmCentral.Controllers
         }
         public IActionResult Index()
         {
-            var products = _context.Products.ToList();
+            var products = _context.Products.Include(f => f.Farmer).ToList();
             return View(products);
         }
         public IActionResult Details(int id)
         {
-            Product product = _context.Products.FirstOrDefault(c => c.Id == id);
+            Product product = _context.Products.Include(u => u.Farmer).FirstOrDefault(c => c.Id == id);
             return View(product);
         }
     }
