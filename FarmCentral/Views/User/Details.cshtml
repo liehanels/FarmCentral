@@ -1,0 +1,62 @@
+﻿@model Farmer
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="main-container">
+    <nav aria-label="breadcrumb" role="navigation" class="bg-primary text-white">
+    </nav>
+    <section class="bg-white space-sm">
+        <div class="container">
+            <div class="row">
+                <!--end of col-->
+                <div class="col-lg-4 d-flex flex-column justify-content-between mr-auto ml-auto">
+                    <div>
+                        <h1 class="mb-2">@Model.FarmerUser.Name</h1>
+                        <h2 class="lead mb-3">@Model.FarmerUser.LastName</h2>
+                    </div>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <!--end of section-->
+    <section class="space-sm">
+        <div class="container">
+            <!--end of col-->
+            <div class="col-12 col-md-4">
+
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-text-document mr-1"></i>Province</div>
+                                <span>@Model.Address.Province</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-edit mr-1"></i>City</div>
+                                <span>@Model.Address.City</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-thumbs-up mr-1"></i>Street</div>
+                                <span>@Model.Address.Street</span>
+                            </div>
+                    </ul>
+                </div>
+
+                <!-- end card -->
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+</div>
+<!--end of container-->
+    </section>

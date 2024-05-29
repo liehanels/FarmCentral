@@ -39,7 +39,8 @@
                                     <p class="card-text">@item.FarmerUser.Id</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">@item.FarmerUser.Email</button>
+                                            <a type="btn btn-success" asp-controller="User" asp-action="Details" asp-route-id="@item.Id"
+                                            class="btn btn-sm btn-outline-secondary">@item.FarmerUser.Email</a>
                                         </div>
                                         <small class="text-muted">@item.FarmerUser.Id</small>
                                     </div>

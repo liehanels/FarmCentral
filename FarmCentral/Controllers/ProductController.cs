@@ -21,6 +21,19 @@ namespace FarmCentral.Controllers
         public IActionResult Details(int id)
         {
             Product product = _context.Products.Include(u => u.Farmer).FirstOrDefault(c => c.Id == id);
+            if (product == null)
+            {
+                product = _context.Products.Include(u => u.Farmer).FirstOrDefault(c => c.Id == 1);
+            }
+            return View(product);
+        }
+        public IActionResult EditProduct(int id)
+        {
+            Product product = _context.Products.FirstOrDefault(c => c.Id == id);
+            if(product == null)
+            {
+                product = _context.Products.FirstOrDefault(c => c.Id == 1);
+            }
             return View(product);
         }
     }
