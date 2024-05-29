@@ -6,7 +6,7 @@ namespace FarmCentral.Interfaces
     {
         Task<IEnumerable<Product>> GetAll();
         Task<Product> GetByIdAsync(int id);
-        Task<IEnumerable<Product>> GetClubByCity(string city);
+        Task<IEnumerable<Product>> GetProductByCity(string city);
         bool Add(Product product);
         bool Update(Product product);
         bool Delete(Product product);

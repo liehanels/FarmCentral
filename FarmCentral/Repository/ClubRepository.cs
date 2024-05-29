@@ -1,38 +1,48 @@
-﻿using FarmCentral.Interfaces;
+﻿using FarmCentral.Data;
+using FarmCentral.Interfaces;
 using FarmCentral.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FarmCentral.Repository
 {
     public class ClubRepository : IProductRepository
     {
+        private readonly ApplicationDbContext _context;
+
+        public ClubRepository(ApplicationDbContext context) 
+        {
+            _context = context;
+        }
         public bool Add(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Add(product);
+            return Save();
         }
 
         public bool Delete(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Remove(product);
+            return Save();
         }
 
-        public Task<IEnumerable<Product>> GetAll()
+        public async Task<IEnumerable<Product>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.Products.ToListAsync();
         }
 
-        public Task<Product> GetByIdAsync(int id)
+        public async Task<Product> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
         }
-
-        public Task<IEnumerable<Product>> GetClubByCity(string city)
+        public async Task<IEnumerable<Product>> GetProductByCity(string city)
         {
-            throw new NotImplementedException();
+            return await _context.Products.Where(c => c.Farmer.Address.City == city).ToListAsync();
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
         }
 
         public bool Update(Product product)
