@@ -40,6 +40,10 @@ namespace FarmCentral.Repository
         {
             return await _context.Products.Where(c => c.Farmer.Address.City == city).ToListAsync();
         }
+        public async Task<IEnumerable<Product>> GetProductByFarmer(int farmerId)
+        {
+            return await _context.Products.Where(c => c.Farmer.Id == farmerId).ToListAsync();
+        }
 
         public bool Save()
         {

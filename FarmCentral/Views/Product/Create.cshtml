@@ -1,0 +1,49 @@
+﻿@*using FarmCentral.Data.Enum*@
+@model Product
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form method="post" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="ProductName">Product Name</label>
+        <input asp-for="ProductName" type="text" class="form-control" id="ProductName" placeholder="Product Name">
+        <span asp-validation-for="ProductName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ManufactorDate">Manufator Date</label>
+        <input asp-for="ManufactorDate" type="date" class="form-control" id="ManufatorDate" placeholder="">
+        <span asp-validation-for="ManufactorDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BestBeforeDate">Best Before Date</label>
+        <input asp-for="BestBeforeDate" type="date" class="form-control" id="BestBeforeDate" placeholder="">
+        <span asp-validation-for="BestBeforeDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity">Quantity</label>
+        <input asp-for="Quantity" type="number" class="form-control" id="Quantity" placeholder="">
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PricePerUnit">Price Per Unit</label>
+        <input asp-for="PricePerUnit" type="number" class="form-control" id="PricePerUnit" placeholder="">
+        <span asp-validation-for="PricePerUnit" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Farmer">Farmer</label>
+        <input asp-for="Farmer" type="number" class="form-control" id="Farmer" placeholder="">
+        <span asp-validation-for="Farmer" class="text-danger"></span>
+    </div>
+     @*<div class="form-group">
+        <label asp-for="Farmer">Farmer</label>
+        <select asp-for="Farmer" asp-items="@Html.GetEnumSelectList<Farmer>" class="form-control form-control-lg">
+            <option>==Select==</option>
+        </select>
+    </div>*@
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
