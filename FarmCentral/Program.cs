@@ -1,4 +1,6 @@
 using FarmCentral.Data;
+using FarmCentral.Interfaces;
+using FarmCentral.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace FarmCentral
@@ -11,6 +13,8 @@ namespace FarmCentral
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IFarmerRepository, FarmerRepository>();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
