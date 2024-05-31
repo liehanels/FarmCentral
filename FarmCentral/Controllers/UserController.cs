@@ -1,6 +1,7 @@
 ﻿using FarmCentral.Data;
 using FarmCentral.Interfaces;
 using FarmCentral.Models;
+using FarmCentral.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,11 +23,25 @@ namespace FarmCentral.Controllers
         public async Task<IActionResult> Details(int id)
         {
             Farmer farmer = await _farmerRepository.GetByIdAsync(id);
-            if(farmer == null)
+            if (farmer == null)
             {
                 farmer = await _farmerRepository.GetByIdAsync(1);
             }
             return View(farmer);
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Farmer farmer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(farmer);
+            }
+            _farmerRepository.Add(farmer);
+            return RedirectToAction("Index");
         }
     }
 }

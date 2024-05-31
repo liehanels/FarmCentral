@@ -43,7 +43,7 @@ namespace FarmCentral.Controllers
                 Quantity = product.Quantity,
                 PricePerUnit = (int)product.PricePerUnit
             };
-            Edit(id, ProductVM);
+            _productRepository.Update(product);
             return View(ProductVM);
         }
         [HttpPost]

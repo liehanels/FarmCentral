@@ -32,17 +32,6 @@
         <input asp-for="PricePerUnit" type="number" class="form-control" id="PricePerUnit" placeholder="">
         <span asp-validation-for="PricePerUnit" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label asp-for="Farmer">Farmer</label>
-        <input asp-for="Farmer" type="number" class="form-control" id="Farmer" placeholder="">
-        <span asp-validation-for="Farmer" class="text-danger"></span>
-    </div>
-     @*<div class="form-group">
-        <label asp-for="Farmer">Farmer</label>
-        <select asp-for="Farmer" asp-items="@Html.GetEnumSelectList<Farmer>" class="form-control form-control-lg">
-            <option>==Select==</option>
-        </select>
-    </div>*@
     <div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

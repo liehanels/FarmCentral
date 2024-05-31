@@ -4,6 +4,7 @@ using FarmCentral.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmCentral.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240531123449_Identity")]
+    partial class Identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace FarmCentral.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses", (string)null);
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("FarmCentral.Models.Farmer", b =>
@@ -113,7 +116,7 @@ namespace FarmCentral.Migrations
 
                     b.HasIndex("FarmerUserId");
 
-                    b.ToTable("Farmers", (string)null);
+                    b.ToTable("Farmers");
                 });
 
             modelBuilder.Entity("FarmCentral.Models.Product", b =>
@@ -147,7 +150,7 @@ namespace FarmCentral.Migrations
 
                     b.HasIndex("FarmerId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("FarmCentral.Models.User", b =>

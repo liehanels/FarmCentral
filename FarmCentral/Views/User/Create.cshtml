@@ -1,0 +1,58 @@
+﻿@*using FarmCentral.Data.Enum*@
+@model Farmer
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form method="post" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="FarmerUser.Name">Name</label>
+        <input asp-for="FarmerUser.Name" type="text" class="form-control" id="PName" placeholder="Name">
+        <span asp-validation-for="FarmerUser.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FarmerUser.LastName">Last Name</label>
+        <input asp-for="FarmerUser.LastName" type="text" class="form-control" id="Last Name" placeholder="">
+        <span asp-validation-for="FarmerUser.LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FarmerUser.Email">Email</label>
+        <input asp-for="FarmerUser.Email" type="email" class="form-control" id="Email" placeholder="">
+        <span asp-validation-for="FarmerUser.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FarmerUser.Password">Password</label>
+        <input asp-for="FarmerUser.Password" type="text" class="form-control" id="Password" placeholder="">
+        <span asp-validation-for="FarmerUser.Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AddressID">AddressID</label>
+        <input asp-for="AddressID" type="number" class="form-control" id="AddressID" placeholder="">
+        <span asp-validation-for="AddressID" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address.Street">Street</label>
+        <input asp-for="Address.Street" type="text" class="form-control" id="Street" placeholder="">
+        <span asp-validation-for="Address.Street" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address.City">City</label>
+        <input asp-for="Address.City" type="text" class="form-control" id="City" placeholder="">
+        <span asp-validation-for="Address.City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address.PostalCode">Postal Code</label>
+        <input asp-for="Address.PostalCode" type="number" class="form-control" id="PostalCode" placeholder="">
+        <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
+    </div>
+     <div class="form-group">
+        <label asp-for="Address.Province">Province</label>
+        <input asp-for="Address.Province" type="text" class="form-control" id="Province" placeholder="">
+        <span asp-validation-for="Address.Province" class="text-danger"></span>
+     </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
