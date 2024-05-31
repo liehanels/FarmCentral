@@ -34,7 +34,8 @@ namespace FarmCentral.Controllers
             Product product = await _productRepository.GetByIdAsync(id);
             if(product == null)
             {
-                return View("Error");
+                await _productRepository.GetByIdAsync(1);
+                return NotFound();
             }
             var ProductVM = new EditProductViewModel
             {
@@ -42,7 +43,26 @@ namespace FarmCentral.Controllers
                 Quantity = product.Quantity,
                 PricePerUnit = (int)product.PricePerUnit
             };
-            return View(product);
+            Edit(id, ProductVM);
+            return View(ProductVM);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditProductViewModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Failed to edit product");
+                return View("Edit", model);
+            }
+            var userProduct = await _productRepository.GetByIdAsyncNoTracking(id);
+            var product = new Product
+            {
+                ProductName = userProduct.ProductName,
+                Quantity = userProduct.Quantity,
+                PricePerUnit = userProduct.PricePerUnit,
+            };
+            _productRepository.Update(product);
+            return RedirectToAction("Index");
         }
         public IActionResult Create()
         {

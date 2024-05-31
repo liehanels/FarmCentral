@@ -35,6 +35,10 @@ namespace FarmCentral.Repository
         {
             return await _context.Products.Include(i => i.Farmer.FarmerUser).FirstOrDefaultAsync(x => x.Id == id);
         }
+        public async Task<Product> GetByIdAsyncNoTracking(int id)
+        {
+            return await _context.Products.Include(i => i.Farmer.FarmerUser).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+        }
 
         public async Task<IEnumerable<Product>> GetProductByCity(string city)
         {
