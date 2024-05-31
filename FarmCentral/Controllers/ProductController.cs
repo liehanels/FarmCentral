@@ -1,6 +1,7 @@
 ﻿using FarmCentral.Data;
 using FarmCentral.Interfaces;
 using FarmCentral.Models;
+using FarmCentral.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,13 +29,19 @@ namespace FarmCentral.Controllers
             }
             return View(product);
         }
-        public async Task<IActionResult> EditProduct(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             Product product = await _productRepository.GetByIdAsync(id);
             if(product == null)
             {
-                product = await _productRepository.GetByIdAsync(1);
+                return View("Error");
             }
+            var ProductVM = new EditProductViewModel
+            {
+                ProductName = product.ProductName,
+                Quantity = product.Quantity,
+                PricePerUnit = (int)product.PricePerUnit
+            };
             return View(product);
         }
         public IActionResult Create()
